@@ -13,14 +13,18 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Env
+# Variables de entorno
 .env
 .env.local
 
-# IDE
+# IDEs y editores
 .vscode/
 .idea/
 
-# Otros
+# Archivos de medios y estaticos
 media/
 static/
+staticfiles/
+
+# Node modules (para tailwind)
+node_modules/

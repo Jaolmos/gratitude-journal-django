@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Diario de Gratitud{% endblock %}</title>
+    {% block css %}{% endblock %}
+</head>
+<body>
+    <header>
+        {% include 'includes/navbar.html' %}
+    </header>
+
+    <main>
+        {% if messages %}
+            {% include 'includes/messages.html' %}
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        {% include 'includes/footer.html' %}
+    </footer>
+
+    {% block js %}{% endblock %}
+</body>
+</html>
