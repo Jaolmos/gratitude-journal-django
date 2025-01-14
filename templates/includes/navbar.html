@@ -7,10 +7,10 @@
             <a href="{% url 'journal:entry_list' %}">Mis Entradas</a>
             <a href="{% url 'journal:entry_create' %}">Nueva Entrada</a>
             <a href="{% url 'users:profile' %}">Mi Perfil</a>
-            <a href="{% url 'logout' %}">Cerrar Sesión</a>
+            <a href="{% url 'users:logout' %}">Cerrar Sesión</a>
         {% else %}
-            <a href="{% url 'login' %}">Iniciar Sesión</a>
-            <a href="{% url 'register' %}">Registrarse</a>
+            <a href="{% url 'users:login' %}">Iniciar Sesión</a>
+            <a href="{% url 'users:signup' %}">Registrarse</a>
         {% endif %}
     </div>
 </nav>

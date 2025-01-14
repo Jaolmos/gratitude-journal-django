@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Diario - Dashboard{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Bienvenido/a, {{ user.username }}</h1>
+    
+    <!-- Sección para nueva entrada -->
+    <div>
+        <a href="{% url 'journal:entry_create' %}">Nueva Entrada</a>
+    </div>
+
+    <!-- Últimas entradas  -->
+    <div>
+        <h2>Tus últimas entradas</h2>
+        <p>Próximamente podrás ver tus entradas aquí</p>
+    </div>
+</div>
+{% endblock %}
