@@ -10,7 +10,7 @@ class Entry(models.Model):
         ('reflective', 'Reflexivo')
     ]
     
-    users = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField('Contenido')
     mood = models.CharField('Estado de ánimo', max_length=10, choices=MOOD_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)

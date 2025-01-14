@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Nueva Entrada - Diario de Gratitud{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Nueva Entrada de Gratitud</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar entrada</button>
+    </form>
+</div>
+{% endblock %}
