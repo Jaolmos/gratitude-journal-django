@@ -1,20 +1,42 @@
 {% extends 'base.html' %}
 
-{% block title %}Mi Diario - Dashboard{% endblock %}
+{% block title %}Dashboard - Diario de Gratitud{% endblock %}
 
 {% block content %}
 <div>
     <h1>Bienvenido/a, {{ user.username }}</h1>
-    
-    <!-- Sección para nueva entrada -->
+
+    <!-- Resumen -->
+    <div>
+        <h2>Tu Resumen</h2>
+        <p>Total de entradas: {{ total_entries }}</p>
+        {% if most_common_mood %}
+            <p>Estado de ánimo más frecuente: {{ most_common_mood.mood }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Botón nueva entrada -->
     <div>
         <a href="{% url 'journal:entry_create' %}">Nueva Entrada</a>
     </div>
 
-    <!-- Últimas entradas  -->
+    <!-- Últimas entradas -->
     <div>
         <h2>Tus últimas entradas</h2>
-        <p>Próximamente podrás ver tus entradas aquí</p>
+        {% if latest_entries %}
+            {% for entry in latest_entries %}
+                <div>
+                    <p>{{ entry.content }}</p>
+                    <small>
+                        {{ entry.get_mood_display }} - 
+                        {{ entry.created_at|date:"d/m/Y H:i" }}
+                    </small>
+                </div>
+            {% endfor %}
+            <a href="{% url 'journal:entry_list' %}">Ver todas las entradas</a>
+        {% else %}
+            <p>Aún no tienes entradas. ¡Empieza a escribir tu gratitud!</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
-{% block title %}Nueva Entrada - Diario de Gratitud{% endblock %}
+{% block title %}
+   {% if object %}
+       Editar Entrada - Diario de Gratitud
+   {% else %}
+       Nueva Entrada - Diario de Gratitud
+   {% endif %}
+{% endblock %}
 
 {% block content %}
 <div>
-    <h2>Nueva Entrada de Gratitud</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar entrada</button>
-    </form>
+   <h2>
+       {% if object %}
+           Editar Entrada de Gratitud
+       {% else %}
+           Nueva Entrada de Gratitud
+       {% endif %}
+   </h2>
+   <form method="post">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit">Guardar entrada</button>
+   </form>
 </div>
 {% endblock %}

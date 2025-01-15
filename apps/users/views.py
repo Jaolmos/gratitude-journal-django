@@ -20,8 +20,6 @@ class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     redirect_authenticated_user = True
     
-class HomeView(TemplateView):
-    template_name= 'home.html'
+
     
-class DashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'journal/dashboard.html'
+

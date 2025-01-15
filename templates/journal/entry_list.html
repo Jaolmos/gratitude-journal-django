@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Mis Entradas - Diario de Gratitud{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Mis Entradas</h2>
+    {% if entries %}
+        {% for entry in entries %}
+        <div class="entry">
+            <p>{{ entry.content }}</p>
+            <div>
+                <span>Estado: {{ entry.get_mood_display }}</span>
+                <span>{{ entry.created_at|date:"d/m/Y H:i" }}</span>
+            </div>
+            <div>
+                <a href="{% url 'journal:entry_update' entry.pk %}">Editar</a>
+                <a href="{% url 'journal:entry_delete' entry.pk %}">Borrar</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Aún no tienes entradas. <a href="{% url 'journal:entry_create' %}">¡Crea tu primera entrada!</a></p>
+    {% endif %}
+</div>
+{% endblock %}
