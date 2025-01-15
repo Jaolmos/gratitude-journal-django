@@ -2,6 +2,10 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
+# Desregistramos el User por defecto
+admin.site.unregister(User)
+
+# Registramos nuestra versión personalizada
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'first_name', 'last_name', 'date_joined', 'is_active', 'is_staff')
