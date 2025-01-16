@@ -19,6 +19,7 @@ class SignUpView(CreateView):
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     redirect_authenticated_user = True
+    success_url = reverse_lazy('journal:dashboard')
     
 
     

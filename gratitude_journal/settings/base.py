@@ -112,3 +112,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de autenticación
+LOGIN_REDIRECT_URL = 'journal:dashboard'  # Redirigir al dashboard después del login
+LOGIN_URL = 'users:login'
+LOGOUT_REDIRECT_URL = 'home'
