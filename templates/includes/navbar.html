@@ -6,6 +6,7 @@
         {% if user.is_authenticated %}
             <a href="{% url 'journal:entry_list' %}">Mis Entradas</a>
             <a href="{% url 'journal:entry_create' %}">Nueva Entrada</a>
+            <a href="{% url 'users:profile' %}">Mi Perfil</a>
             <form method="post" action="{% url 'users:logout' %}" style="display: inline;">
                 {% csrf_token %}
                 <button type="submit">Cerrar Sesión</button>
