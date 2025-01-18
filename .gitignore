@@ -25,10 +25,10 @@ db.sqlite3-journal
 .vscode/
 .idea/
 
-# Archivos de medios y estaticos
+# Archivos de medios y estaticos de producción
 media/
-static/
-staticfiles/
+staticfiles/  # Solo este directorio de estáticos
+
 
 # Node modules (para tailwind)
 node_modules/

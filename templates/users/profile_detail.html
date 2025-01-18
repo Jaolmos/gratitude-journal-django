@@ -3,22 +3,30 @@
 {% block title %}Mi Perfil - Diario de Gratitud{% endblock %}
 
 {% block content %}
-<div>
-    <h2>Perfil de {{ user.username }}</h2>
-    
-    <div>
-        <h3>Información básica</h3>
-        <p><strong>Usuario desde:</strong> {{ user.date_joined|date:"d/m/Y" }}</p>
-        <p><strong>Email:</strong> {{ user.email }}</p>
-        {% if profile.bio %}
-            <p><strong>Biografía:</strong> {{ profile.bio }}</p>
-        {% else %}
-            <p>Sin biografía aún.</p>
-        {% endif %}
-    </div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="card-title mb-4">Perfil de {{ user.username }}</h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="h5">Información básica</h3>
+                        <p><strong>Usuario desde:</strong> {{ user.date_joined|date:"d/m/Y" }}</p>
+                        <p><strong>Email:</strong> {{ user.email }}</p>
+                        {% if profile.bio %}
+                            <p><strong>Biografía:</strong> {{ profile.bio }}</p>
+                        {% else %}
+                            <p class="text-muted">Sin biografía aún.</p>
+                        {% endif %}
+                    </div>
 
-    <div>
-        <a href="{% url 'users:profile_edit' %}">Editar Perfil</a>
+                    <div class="text-end">
+                        <a href="{% url 'users:profile_edit' %}" class="btn btn-primary">Editar Perfil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,30 @@
+/* Variables globales */
+:root {
+    --color-background: #F9F5E9;
+    --color-surface: #F2EDE4;
+    --color-text: #333333;
+}
+
+/* Estilos generales */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar y Footer */
+.navbar, .footer {
+    background-color: var(--color-surface) !important;
+}
+
+/* Main content */
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+}
