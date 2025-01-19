@@ -11,10 +11,10 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm form-card">
                 <div class="card-body p-4">
-                    <h2 class="card-title mb-4">
+                    <h2 class="card-title text-center mb-4">
                         {% if object %}
                             Editar Entrada de Gratitud
                         {% else %}
@@ -25,13 +25,11 @@
                     <form method="post">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <div class="d-flex justify-content-center gap-2">
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Guardar entrada</button>
                             <a href="{% url 'journal:entry_list' %}" class="btn btn-outline-secondary">
                                 Cancelar
                             </a>
-                            <button type="submit" class="btn btn-primary">
-                                Guardar entrada
-                            </button>
                         </div>
                     </form>
                 </div>
