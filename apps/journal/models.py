@@ -7,7 +7,12 @@ class Entry(models.Model):
         ('grateful', 'Agradecido'),
         ('calm', 'Tranquilo'),
         ('motivated', 'Motivado'),
-        ('reflective', 'Reflexivo')
+        ('reflective', 'Reflexivo'),
+        ('sad', 'Triste'),
+        ('angry', 'Enojado'),
+        ('anxious', 'Ansioso'),
+        ('frustrated', 'Frustrado'),
+        ('depressed', 'Deprimido'),
     ]
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
