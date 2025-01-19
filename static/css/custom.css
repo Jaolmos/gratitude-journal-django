@@ -54,3 +54,22 @@ main {
 .hero-section .container {
     z-index: 1;
 }
+
+
+/* Efectos para las tarjetas de beneficios en home */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card-hover .bi {
+    transition: transform 0.3s ease;
+}
+
+.card-hover:hover .bi {
+    transform: scale(1.1);
+}
