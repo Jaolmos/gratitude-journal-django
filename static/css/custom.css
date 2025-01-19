@@ -35,3 +35,22 @@ main {
 .card.form-card {
     background-color: #F2F2F2 !important;
 }
+
+.hero-section {
+    background: url('../img/meditation.jpg') center/cover no-repeat;
+    position: relative;
+    min-height: 100vh;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+}
+
+.hero-section .container {
+    z-index: 1;
+}
