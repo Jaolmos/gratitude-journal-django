@@ -3,24 +3,55 @@
 {% block title %}Mis Entradas - Diario de Gratitud{% endblock %}
 
 {% block content %}
-<div>
-    <h2>Mis Entradas</h2>
-    {% if entries %}
-        {% for entry in entries %}
-        <div class="entry">
-            <p>{{ entry.content }}</p>
-            <div>
-                <span>Estado: {{ entry.get_mood_display }}</span>
-                <span>{{ entry.created_at|date:"d/m/Y H:i" }}</span>
-            </div>
-            <div>
-                <a href="{% url 'journal:entry_update' entry.pk %}">Editar</a>
-                <a href="{% url 'journal:entry_delete' entry.pk %}">Borrar</a>
-            </div>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h2 class="h3">Mis Entradas</h2>
         </div>
-        {% endfor %}
+        <div class="col text-end">
+            <a href="{% url 'journal:entry_create' %}" class="btn btn-primary">
+                Nueva Entrada
+            </a>
+        </div>
+    </div>
+
+    {% if entries %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for entry in entries %}
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">{{ entry.content }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-light text-dark">
+                                {{ entry.get_mood_display }}
+                            </span>
+                            <small class="text-muted">
+                                {{ entry.created_at|date:"d/m/Y H:i" }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <div class="d-flex justify-content-end gap-2">
+                            <a href="{% url 'journal:entry_update' entry.pk %}" class="btn btn-sm btn-outline-primary">
+                                Editar
+                            </a>
+                            <a href="{% url 'journal:entry_delete' entry.pk %}" class="btn btn-sm btn-outline-danger">
+                                Borrar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     {% else %}
-        <p>Aún no tienes entradas. <a href="{% url 'journal:entry_create' %}">¡Crea tu primera entrada!</a></p>
+        <div class="text-center py-5">
+            <p class="lead mb-4">Aún no tienes entradas.</p>
+            <a href="{% url 'journal:entry_create' %}" class="btn btn-primary">
+                ¡Crea tu primera entrada!
+            </a>
+        </div>
     {% endif %}
 </div>
 {% endblock %}
