@@ -4,16 +4,32 @@
 
 {% block content %}
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center" style="margin-top: 100px;">
         <div class="col-md-6 col-lg-5">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm form-card">
                 <div class="card-body p-4">
                     <h2 class="card-title text-center mb-4">Iniciar Sesión</h2>
                     
-                    <form method="post">
+                    <form method="post" novalidate>
                         {% csrf_token %}
-                        {{ form.as_p }}
-                        <div class="d-grid">
+                        {% for field in form %}
+                            <div class="form-group mb-3">
+                                {{ field.label_tag }}
+                                <input type="{{ field.field.widget.input_type }}" 
+                                       name="{{ field.name }}"
+                                       class="form-control {% if field.errors %}is-invalid{% endif %}"
+                                       id="{{ field.id_for_label }}"
+                                       {% if field.field.required %}required{% endif %}
+                                >
+                                {% if field.errors %}
+                                    <div class="invalid-feedback">
+                                        {{ field.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        
+                        <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                         </div>
                     </form>

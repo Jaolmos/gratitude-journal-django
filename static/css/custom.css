@@ -24,7 +24,14 @@ main {
     flex: 1 0 auto;
 }
 
+
 /* Footer */
 .footer {
     margin-top: auto;
+}
+
+
+/* Form card */
+.card.form-card {
+    background-color: #F2F2F2 !important;
 }
