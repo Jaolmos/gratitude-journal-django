@@ -4,7 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from .models import Entry
 from .forms import EntryForm
-
+from django.contrib import messages
+from django.http import HttpResponse
 
 class HomeView(TemplateView):
     template_name= 'home.html'
@@ -38,6 +39,17 @@ class EntryDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'journal/entry_confirm_delete.html'
     success_url = reverse_lazy('journal:entry_list')
     
+    def post(self, request, *args, **kwargs):
+        # Si es una petición HTMX, eliminamos directamente
+        if request.headers.get('HX-Request'):
+            self.object = self.get_object()
+            self.object.delete()
+            #  devolvemos una respuesta vacía
+            return HttpResponse("")
+           
+            
+        # Si no es HTMX, seguimos el flujo normal con confirmación
+        return super().post(request, *args, **kwargs)
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'journal/dashboard.html'
 

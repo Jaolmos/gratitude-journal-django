@@ -36,9 +36,16 @@
                             <a href="{% url 'journal:entry_update' entry.pk %}" class="btn btn-sm btn-outline-primary">
                                 Editar
                             </a>
-                            <a href="{% url 'journal:entry_delete' entry.pk %}" class="btn btn-sm btn-outline-danger">
-                                Borrar
-                            </a>
+                            <button class="btn btn-sm btn-outline-danger"
+                                hx-post="{% url 'journal:entry_delete' entry.pk %}"
+                                hx-confirm="¿Estás seguro de que quieres eliminar esta entrada?"
+                                hx-target="closest .col"
+                                hx-swap="outerHTML swap:1s"
+                                hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+                                >
+
+                            Borrar
+                            </button>    
                         </div>
                     </div>
                 </div>
