@@ -1,7 +1,11 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <!-- Logo/Nombre -->
-        <a class="navbar-brand" href="{% url 'home' %}">Diario de Gratitud</a>
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+            <img src="{% static 'img/logo.png' %}" alt="Logo" height="50" class="me-2">
+            Diario de Gratitud
+        </a>
 
         <!-- Botón hamburguesa para móvil -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" 
