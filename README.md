@@ -71,3 +71,13 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+## Capturas de pantalla 📸
+
+### Página de Inicio
+![Home](screenshots/home.png)
+
+### Mis Entradas
+![Entradas](screenshots/MisEntradas.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
