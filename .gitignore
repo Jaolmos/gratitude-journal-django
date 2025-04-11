@@ -27,7 +27,7 @@ db.sqlite3-journal
 
 # Archivos de medios y estaticos de producción
 media/
-staticfiles/  # Solo este directorio de estáticos
+staticfiles/
 
 
 # Node modules (para tailwind)
