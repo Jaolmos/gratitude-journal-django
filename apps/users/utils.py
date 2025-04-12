@@ -1,5 +1,26 @@
 from datetime import date, timedelta
 from django.utils import timezone
+from .models import Achievement
+
+def check_achievements(profile):
+    """
+    Verifica y otorga logros basados en la racha actual del usuario.
+    """
+    streak_achievements = [
+        (7, 'WEEK'),      # Semana Constante
+        (30, 'MONTH'),    # Mes Dedicado
+        (90, 'QUARTER'),  # Trimestre de Gratitud
+        (180, 'HALF_YEAR'), # Medio Año de Reflexión
+        (365, 'YEAR')     # Maestro de la Gratitud
+    ]
+    
+    for days, achievement_type in streak_achievements:
+        if profile.current_streak >= days:
+            # Intentar crear el logro si no existe
+            Achievement.objects.get_or_create(
+                user=profile.user,
+                achievement_type=achievement_type
+            )
 
 def update_user_streak(profile):
     """
@@ -13,6 +34,7 @@ def update_user_streak(profile):
         profile.best_streak = max(profile.best_streak, 1)
         profile.last_entry_date = today
         profile.save()
+        check_achievements(profile)
         return
     
     # Si la última entrada fue ayer, incrementamos la racha
@@ -27,4 +49,7 @@ def update_user_streak(profile):
         profile.current_streak = 1
     
     profile.last_entry_date = today
-    profile.save() 
+    profile.save()
+    
+    # Verificar logros después de actualizar la racha
+    check_achievements(profile) 

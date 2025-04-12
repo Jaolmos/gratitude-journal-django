@@ -45,6 +45,46 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Sección de Logros -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <h3 class="h6 mb-3">🏆 Tus Logros</h3>
+                                    
+                                    {% if achievements %}
+                                        <div class="achievements-earned mb-3">
+                                            {% for achievement in achievements %}
+                                                <span class="badge bg-success me-2 mb-2">
+                                                    {{ achievement.get_achievement_type_display }}
+                                                </span>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if next_achievement %}
+                                        <div class="next-achievement">
+                                            <p class="mb-2">
+                                                <strong>Próximo objetivo:</strong> {{ next_achievement.name }}
+                                                <small class="text-muted">(faltan {{ next_achievement.days_remaining }} días)</small>
+                                            </p>
+                                            <div class="progress" style="height: 20px;">
+                                                <div class="progress-bar bg-success" 
+                                                     role="progressbar" 
+                                                     style="width: {{ next_achievement.progress|floatformat:0 }}%"
+                                                     aria-valuenow="{{ next_achievement.progress|floatformat:0 }}"
+                                                     aria-valuemin="0"
+                                                     aria-valuemax="100">
+                                                    {{ next_achievement.progress|floatformat:0 }}%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

@@ -44,3 +44,37 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Perfil de {self.user.username}'
+
+class Achievement(models.Model):
+    ACHIEVEMENT_TYPES = [
+        ('WEEK', 'Semana Constante'),
+        ('MONTH', 'Mes Dedicado'),
+        ('QUARTER', 'Trimestre de Gratitud'),
+        ('HALF_YEAR', 'Medio Año de Reflexión'),
+        ('YEAR', 'Maestro de la Gratitud')
+    ]
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='achievements',
+        verbose_name='Usuario'
+    )
+    achievement_type = models.CharField(
+        'Tipo de Logro',
+        max_length=20,
+        choices=ACHIEVEMENT_TYPES
+    )
+    earned_date = models.DateTimeField(
+        'Fecha de obtención',
+        auto_now_add=True
+    )
+
+    class Meta:
+        verbose_name = 'Logro'
+        verbose_name_plural = 'Logros'
+        # Evitar duplicados del mismo logro para el mismo usuario
+        unique_together = ['user', 'achievement_type']
+
+    def __str__(self):
+        return f'{self.get_achievement_type_display()} - {self.user.username}'

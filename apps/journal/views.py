@@ -7,9 +7,11 @@ from .forms import EntryForm
 from django.contrib import messages
 from django.http import HttpResponse
 from apps.users.utils import update_user_streak
+from apps.users.models import Achievement
 
 class HomeView(TemplateView):
     template_name= 'home.html'
+
 class EntryCreateView(LoginRequiredMixin, CreateView):
     model = Entry
     form_class = EntryForm
@@ -51,11 +53,31 @@ class EntryDeleteView(LoginRequiredMixin, DeleteView):
             #  devolvemos una respuesta vacía
             return HttpResponse("")
            
-            
         # Si no es HTMX, seguimos el flujo normal con confirmación
         return super().post(request, *args, **kwargs)
+
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'journal/dashboard.html'
+
+    def get_next_achievement_info(self, current_streak):
+        """Obtiene información sobre el siguiente logro a alcanzar."""
+        achievement_levels = [
+            (7, 'Semana Constante'),
+            (30, 'Mes Dedicado'),
+            (90, 'Trimestre de Gratitud'),
+            (180, 'Medio Año de Reflexión'),
+            (365, 'Maestro de la Gratitud')
+        ]
+        
+        for days, name in achievement_levels:
+            if current_streak < days:
+                return {
+                    'name': name,
+                    'days_required': days,
+                    'days_remaining': days - current_streak,
+                    'progress': (current_streak / days) * 100
+                }
+        return None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -78,5 +100,15 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context['current_streak'] = profile.current_streak
         context['best_streak'] = profile.best_streak
         context['last_entry_date'] = profile.last_entry_date
+
+        # Logros conseguidos
+        context['achievements'] = Achievement.objects.filter(
+            user=self.request.user
+        ).order_by('earned_date')
+
+        # Información del próximo logro
+        next_achievement = self.get_next_achievement_info(profile.current_streak)
+        if next_achievement:
+            context['next_achievement'] = next_achievement
 
         return context
