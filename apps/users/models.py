@@ -12,6 +12,23 @@ class Profile(models.Model):
         max_length=500, 
         blank=True
     )
+    # Campos para el sistema de rachas
+    current_streak = models.IntegerField(
+        'Racha actual',
+        default=0,
+        help_text='Días consecutivos escribiendo en el diario'
+    )
+    best_streak = models.IntegerField(
+        'Mejor racha',
+        default=0,
+        help_text='Mayor número de días consecutivos alcanzado'
+    )
+    last_entry_date = models.DateField(
+        'Última entrada',
+        null=True,
+        blank=True,
+        help_text='Fecha de la última entrada en el diario'
+    )
     created_at = models.DateTimeField(
         'Fecha de creación',
         auto_now_add=True

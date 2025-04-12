@@ -6,6 +6,7 @@ from .models import Entry
 from .forms import EntryForm
 from django.contrib import messages
 from django.http import HttpResponse
+from apps.users.utils import update_user_streak
 
 class HomeView(TemplateView):
     template_name= 'home.html'
@@ -17,7 +18,10 @@ class EntryCreateView(LoginRequiredMixin, CreateView):
     
     def form_valid(self, form):
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        # Actualizar la racha del usuario
+        update_user_streak(self.request.user.profile)
+        return response
     
 class EntryListView(LoginRequiredMixin, ListView):
     model = Entry
@@ -68,5 +72,11 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             .order_by('-count')
             .first()
         )
+        
+        # Información de rachas
+        profile = self.request.user.profile
+        context['current_streak'] = profile.current_streak
+        context['best_streak'] = profile.best_streak
+        context['last_entry_date'] = profile.last_entry_date
 
         return context

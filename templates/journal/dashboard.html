@@ -23,6 +23,28 @@
                         </div>
                         {% endif %}
                     </div>
+                    <!-- Sección de Rachas -->
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="alert alert-info">
+                                <h3 class="h6 mb-2">🔥 Tu Racha</h3>
+                                <p class="mb-1">
+                                    <strong>Racha actual:</strong> 
+                                    <span class="badge bg-primary">{{ current_streak }} días</span>
+                                </p>
+                                <p class="mb-1">
+                                    <strong>Mejor racha:</strong> 
+                                    <span class="badge bg-success">{{ best_streak }} días</span>
+                                </p>
+                                {% if last_entry_date %}
+                                <p class="mb-0">
+                                    <strong>Última entrada:</strong> 
+                                    {{ last_entry_date|date:"d/m/Y" }}
+                                </p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
