@@ -14,6 +14,18 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
   - Registro de mejor racha histórica.
   - Motivación para mantener el hábito diario.
 
+- **Sistema de Logros** 🏆
+  - Logros desbloqueables por constancia:
+    - Semana Constante (7 días)
+    - Mes Dedicado (30 días)
+    - Trimestre de Gratitud (90 días)
+    - Medio Año de Reflexión (180 días)
+    - Maestro de la Gratitud (365 días)
+  - Barra de progreso visual que muestra:
+    - Porcentaje completado hacia el siguiente logro
+    - Días restantes para alcanzar el objetivo
+    - Actualización automática del progreso diario
+
 - **Interfaz intuitiva**
   - Diseño responsive con Bootstrap.
   - Navegación sencilla.
