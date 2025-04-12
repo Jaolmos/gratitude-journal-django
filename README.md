@@ -9,6 +9,11 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
   - Registro del estado de ánimo.
   - Organización cronológica.
 
+- **Sistema de Rachas** 🔥
+  - Seguimiento de días consecutivos escribiendo.
+  - Registro de mejor racha histórica.
+  - Motivación para mantener el hábito diario.
+
 - **Interfaz intuitiva**
   - Diseño responsive con Bootstrap.
   - Navegación sencilla.
