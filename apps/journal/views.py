@@ -8,6 +8,8 @@ from django.contrib import messages
 from django.http import HttpResponse
 from apps.users.utils import update_user_streak
 from apps.users.models import Achievement
+import random
+from .data.quotes import QUOTES  # Importamos las frases desde el archivo dedicado
 
 class HomeView(TemplateView):
     template_name= 'home.html'
@@ -59,6 +61,10 @@ class EntryDeleteView(LoginRequiredMixin, DeleteView):
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'journal/dashboard.html'
 
+    def get_random_quote(self):
+        """Retorna una frase motivacional aleatoria."""
+        return random.choice(QUOTES)
+
     def get_next_achievement_info(self, current_streak):
         """Obtiene información sobre el siguiente logro a alcanzar."""
         achievement_levels = [
@@ -88,12 +94,19 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         
         # Estadísticas básicas
         context['total_entries'] = user_entries.count()
-        context['most_common_mood'] = (
+        most_common = (
             user_entries.values('mood')
             .annotate(count=models.Count('mood'))
             .order_by('-count')
             .first()
         )
+        if most_common:
+            entry = Entry()  # Instancia temporal para usar get_mood_display
+            entry.mood = most_common['mood']
+            context['most_common_mood'] = {
+                'mood': entry.get_mood_display(),  # Esto devolverá el valor en español
+                'count': most_common['count']
+            }
         
         # Información de rachas
         profile = self.request.user.profile
@@ -110,5 +123,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         next_achievement = self.get_next_achievement_info(profile.current_streak)
         if next_achievement:
             context['next_achievement'] = next_achievement
+            
+        # Frase motivacional aleatoria
+        context['quote'] = self.get_random_quote()
 
         return context

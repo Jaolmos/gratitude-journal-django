@@ -2,12 +2,38 @@
 
 {% block title %}Dashboard - Diario de Gratitud{% endblock %}
 
+{% block css %}
+<style>
+    .blockquote {
+        font-size: 1.1rem;
+    }
+    .blockquote-footer {
+        font-size: 0.85rem;
+    }
+    .border-start.border-primary {
+        border-left-width: 0.25rem !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <!-- Bienvenida -->
             <h1 class="h2 mb-4">Bienvenido/a, {{ user.username }}</h1>
+            
+            <!-- Frase motivacional -->
+            {% if quote %}
+            <div class="card shadow-sm mb-4 border-start border-primary">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p class="fst-italic">"{{ quote.text }}"</p>
+                        <footer class="blockquote-footer text-end">{{ quote.author }}</footer>
+                    </blockquote>
+                </div>
+            </div>
+            {% endif %}
 
             <!-- Resumen -->
             <div class="card shadow-sm mb-4">
