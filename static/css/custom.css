@@ -3,6 +3,9 @@
     --color-background: #F9F5E9;
     --color-surface: #F2EDE4;
     --color-text: #333333;
+    --color-card: #F2F2F2;
+    --color-primary: #4CAF50;
+    --color-primary-hover: #3d8b40;
 }
 
 /* Estilos generales */
@@ -34,17 +37,70 @@ main {
 
 /* Form card */
 .card.form-card {
-    background-color: #F2F2F2 !important;
+    background-color: var(--color-card) !important;
 }
 
 /* Secciones de tarjetas */
 .entry-card, .achievement-card, .profile-section, .streak-card {
-    background-color: #F2F2F2;
+    background-color: var(--color-card);
     border-radius: 0.375rem;
     padding: 1rem;
     margin-bottom: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos para citas */
+.blockquote {
+    font-size: 1.1rem;
+}
+.blockquote-footer {
+    font-size: 0.85rem;
+}
+.border-start.border-primary {
+    border-left-width: 0.25rem !important;
+}
+
+/* Estilos para controles de formulario */
+.form-control, .form-select {
+    background-color: var(--color-background) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: var(--color-background) !important;
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.05);
+}
+
+/* Badge para estado de ánimo */
+.mood-badge {
+    background-color: var(--color-card) !important;
+    color: var(--color-text) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de paginación */
+.pagination .page-link {
+    color: var(--color-text);
+    background-color: var(--color-background);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: var(--color-background);
 }
 
 .profile-section {
