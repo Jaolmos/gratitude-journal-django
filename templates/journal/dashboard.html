@@ -13,6 +13,28 @@
     .border-start.border-primary {
         border-left-width: 0.25rem !important;
     }
+    .dashboard-section {
+        margin-bottom: 1.5rem;
+    }
+    .entry-card {
+        background-color: #F2F2F2;
+        border-radius: 0.375rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .achievement-card {
+        background-color: #F2F2F2;
+        border-radius: 0.375rem;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .streak-card {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+    }
 </style>
 {% endblock %}
 
@@ -25,132 +47,122 @@
             
             <!-- Frase motivacional -->
             {% if quote %}
-            <div class="card shadow-sm mb-4 border-start border-primary">
-                <div class="card-body">
-                    <blockquote class="blockquote mb-0">
-                        <p class="fst-italic">"{{ quote.text }}"</p>
-                        <footer class="blockquote-footer text-end">{{ quote.author }}</footer>
-                    </blockquote>
-                </div>
+            <div class="border-start border-primary ps-3 mb-4 dashboard-section">
+                <blockquote class="blockquote mb-0">
+                    <p class="fst-italic">"{{ quote.text }}"</p>
+                    <footer class="blockquote-footer text-end">{{ quote.author }}</footer>
+                </blockquote>
             </div>
             {% endif %}
 
             <!-- Resumen -->
-            <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                    <h2 class="h5 card-title mb-3">Tu Resumen</h2>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p class="mb-2"><strong>Total de entradas:</strong> {{ total_entries }}</p>
-                        </div>
-                        {% if most_common_mood %}
-                        <div class="col-sm-6">
-                            <p class="mb-2"><strong>Estado más frecuente:</strong> {{ most_common_mood.mood }}</p>
-                        </div>
-                        {% endif %}
+            <div class="dashboard-section">
+                <h2 class="h5 mb-3">Tu Resumen</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="mb-2"><strong>Total de entradas:</strong> {{ total_entries }}</p>
                     </div>
-                    <!-- Sección de Rachas -->
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="alert alert-info">
-                                <h3 class="h6 mb-2">🔥 Tu Racha</h3>
-                                <p class="mb-1">
-                                    <strong>Racha actual:</strong> 
-                                    <span class="badge bg-primary">{{ current_streak }} días</span>
-                                </p>
-                                <p class="mb-1">
-                                    <strong>Mejor racha:</strong> 
-                                    <span class="badge bg-success">{{ best_streak }} días</span>
-                                </p>
-                                {% if last_entry_date %}
-                                <p class="mb-0">
-                                    <strong>Última entrada:</strong> 
-                                    {{ last_entry_date|date:"d/m/Y" }}
-                                </p>
-                                {% endif %}
-                            </div>
+                    {% if most_common_mood %}
+                    <div class="col-sm-6">
+                        <p class="mb-2"><strong>Estado más frecuente:</strong> {{ most_common_mood.mood }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Sección de Rachas -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="alert alert-info streak-card">
+                            <h3 class="h6 mb-2">🔥 Tu Racha</h3>
+                            <p class="mb-1">
+                                <strong>Racha actual:</strong> 
+                                <span class="badge bg-primary">{{ current_streak }} días</span>
+                            </p>
+                            <p class="mb-1">
+                                <strong>Mejor racha:</strong> 
+                                <span class="badge bg-success">{{ best_streak }} días</span>
+                            </p>
+                            {% if last_entry_date %}
+                            <p class="mb-0">
+                                <strong>Última entrada:</strong> 
+                                {{ last_entry_date|date:"d/m/Y" }}
+                            </p>
+                            {% endif %}
                         </div>
                     </div>
+                </div>
 
-                    <!-- Sección de Logros -->
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <h3 class="h6 mb-3">🏆 Tus Logros</h3>
-                                    
-                                    {% if achievements %}
-                                        <div class="achievements-earned mb-3">
-                                            {% for achievement in achievements %}
-                                                <span class="badge bg-success me-2 mb-2">
-                                                    {{ achievement.get_achievement_type_display }}
-                                                </span>
-                                            {% endfor %}
-                                        </div>
-                                    {% endif %}
-
-                                    {% if next_achievement %}
-                                        <div class="next-achievement">
-                                            <p class="mb-2">
-                                                <strong>Próximo objetivo:</strong> {{ next_achievement.name }}
-                                                <small class="text-muted">(faltan {{ next_achievement.days_remaining }} días)</small>
-                                            </p>
-                                            <div class="progress" style="height: 20px;">
-                                                <div class="progress-bar bg-success" 
-                                                     role="progressbar" 
-                                                     style="width: {{ next_achievement.progress|floatformat:0 }}%"
-                                                     aria-valuenow="{{ next_achievement.progress|floatformat:0 }}"
-                                                     aria-valuemin="0"
-                                                     aria-valuemax="100">
-                                                    {{ next_achievement.progress|floatformat:0 }}%
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endif %}
+                <!-- Sección de Logros -->
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="achievement-card">
+                            <h3 class="h6 mb-3">🏆 Tus Logros</h3>
+                            
+                            {% if achievements %}
+                                <div class="achievements-earned mb-3">
+                                    {% for achievement in achievements %}
+                                        <span class="badge bg-success me-2 mb-2">
+                                            {{ achievement.get_achievement_type_display }}
+                                        </span>
+                                    {% endfor %}
                                 </div>
-                            </div>
+                            {% endif %}
+
+                            {% if next_achievement %}
+                                <div class="next-achievement">
+                                    <p class="mb-2">
+                                        <strong>Próximo objetivo:</strong> {{ next_achievement.name }}
+                                        <small class="text-muted">(faltan {{ next_achievement.days_remaining }} días)</small>
+                                    </p>
+                                    <div class="progress" style="height: 20px;">
+                                        <div class="progress-bar bg-success" 
+                                            role="progressbar" 
+                                            style="width: {{ next_achievement.progress|floatformat:0 }}%"
+                                            aria-valuenow="{{ next_achievement.progress|floatformat:0 }}"
+                                            aria-valuemin="0"
+                                            aria-valuemax="100">
+                                            {{ next_achievement.progress|floatformat:0 }}%
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Últimas entradas -->
-            <div class="card shadow-sm">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h2 class="h5 card-title mb-0">Tus últimas entradas</h2>
-                        <a href="{% url 'journal:entry_create' %}" class="btn btn-primary btn-sm">
-                            Nueva Entrada
+            <div class="dashboard-section">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h5 mb-0">Tus últimas entradas</h2>
+                    <a href="{% url 'journal:entry_create' %}" class="btn btn-primary btn-sm">
+                        Nueva Entrada
+                    </a>
+                </div>
+
+                {% if latest_entries %}
+                    {% for entry in latest_entries %}
+                        <div class="entry-card">
+                            <p class="mb-2">{{ entry.content }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-light text-dark">
+                                    {{ entry.get_mood_display }}
+                                </span>
+                                <small class="text-muted">
+                                    {{ entry.created_at|date:"d/m/Y H:i" }}
+                                </small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="text-center mt-3">
+                        <a href="{% url 'journal:entry_list' %}" class="btn btn-outline-primary">
+                            Ver todas las entradas
                         </a>
                     </div>
-
-                    {% if latest_entries %}
-                        {% for entry in latest_entries %}
-                            <div class="card bg-light mb-3">
-                                <div class="card-body">
-                                    <p class="card-text">{{ entry.content }}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="badge bg-light text-dark">
-                                            {{ entry.get_mood_display }}
-                                        </span>
-                                        <small class="text-muted">
-                                            {{ entry.created_at|date:"d/m/Y H:i" }}
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <div class="text-center mt-3">
-                            <a href="{% url 'journal:entry_list' %}" class="btn btn-outline-primary">
-                                Ver todas las entradas
-                            </a>
-                        </div>
-                    {% else %}
-                        <div class="text-center py-4">
-                            <p class="mb-0">Aún no tienes entradas. ¡Empieza a escribir tu gratitud!</p>
-                        </div>
-                    {% endif %}
-                </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <p class="mb-0">Aún no tienes entradas. ¡Empieza a escribir tu gratitud!</p>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

@@ -1,0 +1,122 @@
+/* Estilos para el dashboard del Diario de Gratitud */
+
+/* Mejoras visuales para las tarjetas */
+.card {
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Tarjeta con borde de acento verde */
+.card.border-primary {
+    border-left: 5px solid #4CAF50 !important;
+}
+
+/* Mejoras para las secciones */
+.summary-section .card-title,
+.entries-section .card-title,
+.streak-section h3,
+.achievements-section h3 {
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 15px;
+}
+
+/* Estilos para rachas */
+.streak-section {
+    background-color: #E8F5E9;
+    border-radius: 8px;
+    padding: 16px;
+    border: none;
+}
+
+/* Estilos para logros */
+.achievements-section {
+    background-color: #FFF8E1;
+    border-radius: 8px;
+    padding: 16px;
+    border: none;
+}
+
+/* Estilos base para los badges de logros */
+.achievements-earned .badge {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    transition: transform 0.2s;
+}
+
+.achievements-earned .badge:hover {
+    transform: scale(1.05);
+}
+
+/* Colores específicos para cada nivel de logro */
+.badge-week {
+    background-color: #66BB6A; /* Verde claro */
+}
+
+.badge-month {
+    background-color: #26A69A; /* Verde turquesa */
+}
+
+.badge-quarter {
+    background-color: #42A5F5; /* Azul */
+}
+
+.badge-halfyear {
+    background-color: #7E57C2; /* Púrpura */
+}
+
+.badge-year {
+    background-color: #EC407A; /* Rosa */
+    background-image: linear-gradient(45deg, #EC407A, #FFA726);
+    color: white;
+    font-weight: bold;
+}
+
+/* Mejoras para la barra de progreso */
+.progress {
+    height: 22px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #E0E0E0;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #66BB6A, #43A047);
+    font-weight: 600;
+    line-height: 22px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    padding-left: 10px;
+    text-align: left;
+}
+
+/* Mejoras para la cita */
+.blockquote {
+    border-left: 3px solid #4CAF50;
+    padding-left: 15px;
+    margin: 0;
+}
+
+/* Estilos para las tarjetas de entradas */
+.entries-card {
+    background-color: #F5F5F5;
+    border-radius: 8px;
+}
+
+.entry-date {
+    font-size: 0.85rem;
+    color: #757575;
+} 
