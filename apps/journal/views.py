@@ -31,7 +31,7 @@ class EntryListView(LoginRequiredMixin, ListView):
     model = Entry
     template_name = 'journal/entry_list.html'
     context_object_name = 'entries'
-    paginate_by = 10
+    paginate_by = 16
 
     def get_queryset(self):
         return Entry.objects.filter(user=self.request.user).order_by('-created_at')
