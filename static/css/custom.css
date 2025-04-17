@@ -4,8 +4,6 @@
     --color-surface: #F2EDE4;
     --color-text: #333333;
     --color-card: #F2F2F2;
-    --color-primary: #4CAF50;
-    --color-primary-hover: #3d8b40;
 }
 
 /* Estilos generales */
@@ -84,20 +82,20 @@ main {
 
 /* Estilos de paginación */
 .pagination .page-link {
-    color: var(--color-text);
+    color: var(--bs-primary);
     background-color: var(--color-background);
     border-color: rgba(0, 0, 0, 0.1);
 }
 
 .pagination .page-item.active .page-link {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
     color: white;
 }
 
 .pagination .page-link:hover {
     background-color: var(--color-surface);
-    color: var(--color-text);
+    color: var(--bs-primary-dark, #0056b3);
 }
 
 .pagination .page-item.disabled .page-link {
