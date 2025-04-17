@@ -148,3 +148,82 @@ main {
 .card-hover:hover .bi {
     transform: scale(1.1);
 }
+
+/* ------------- DashFX - Efectos interactivos para el dashboard ------------- */
+
+/* Efecto hover para las tarjetas */
+.entry-card, .card.form-card, .streak-card, .achievement-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.entry-card:hover, .card.form-card:hover, .streak-card:hover, .achievement-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    background-color: var(--color-background);
+    border-left: 3px solid var(--bs-primary, #0d6efd);
+}
+
+/* Efecto para el texto de la tarjeta */
+.entry-card p, .card.form-card .card-text {
+    transition: color 0.3s ease;
+}
+
+.entry-card:hover p, .card.form-card:hover .card-text {
+    color: var(--bs-primary, #0d6efd);
+}
+
+/* Efecto para insignias */
+.badge {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.entry-card:hover .badge, .card.form-card:hover .badge {
+    transform: scale(1.05) translateZ(0);
+    background-color: var(--bs-primary, #0d6efd) !important;
+    color: white !important;
+}
+
+/* Efecto de brillo */
+.shine-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 0.8s ease;
+}
+
+/* Estilos para resaltar la tarjeta activa */
+.entry-card.active-card, .card.form-card.active-card {
+    border-left: 3px solid var(--bs-primary, #0d6efd);
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Estilos para la barra de progreso */
+.progress-bar {
+    transition: width 1.5s ease-out;
+}
