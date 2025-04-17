@@ -26,10 +26,17 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
     - Días restantes para alcanzar el objetivo
     - Actualización automática del progreso diario
 
-- **Interfaz intuitiva**
+- **Interfaz intuitiva e interactiva**
   - Diseño responsive con Bootstrap.
   - Navegación sencilla.
   - Experiencia de usuario fluida.
+  - Efectos interactivos adaptativos.
+
+- **Interacciones modernas** ✨
+  - Eliminación de entradas con HTMX sin recarga de página.
+  - Efectos visuales adaptativos según el dispositivo.
+  - Animaciones sutiles que mejoran la experiencia de usuario.
+  - Retroalimentación visual inmediata a las acciones del usuario.
 
 - **Seguridad**
   - Sistema de autenticación de usuarios.
@@ -40,9 +47,26 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
 
 - Django 5.0
 - Bootstrap 5
-- MySQL
+- JavaScript vanilla
 - HTMX 
+- MySQL
 - Python 3.10+
+- CSS moderno (animaciones, transiciones)
+
+## Características de la interfaz interactiva 💫
+
+- **Efectos adaptativos según dispositivo**
+  - En escritorio: efectos de brillo que siguen al cursor, cambios de color, sombras.
+  - En móviles: efectos táctiles optimizados con feedback visual sutil.
+
+- **Animaciones de carga**
+  - Barras de progreso con animación al cargar la página.
+  - Transiciones suaves entre estados.
+
+- **Diseño interactivo**
+  - Tarjetas con efectos hover para indicación visual.
+  - Feedback inmediato a las acciones del usuario.
+  - Optimizado para rendimiento en todos los dispositivos.
 
 ## Estructura del proyecto 💃
 
