@@ -152,14 +152,14 @@ main {
 /* ------------- DashFX - Efectos interactivos para el dashboard ------------- */
 
 /* Efecto hover para las tarjetas */
-.entry-card, .card.form-card, .streak-card, .achievement-card {
+.entry-card, .card.form-card, .streak-card, .achievement-card, .profile-section {
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
     border-left: 3px solid transparent;
 }
 
-.entry-card:hover, .card.form-card:hover, .streak-card:hover, .achievement-card:hover {
+.entry-card:hover, .card.form-card:hover, .streak-card:hover, .achievement-card:hover, .profile-section:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
     background-color: var(--color-background);
     border-left: 3px solid var(--bs-primary, #0d6efd);
@@ -218,7 +218,7 @@ main {
 }
 
 /* Estilos para resaltar la tarjeta activa */
-.entry-card.active-card, .card.form-card.active-card {
+.entry-card.active-card, .card.form-card.active-card, .profile-section.active-card {
     border-left: 3px solid var(--bs-primary, #0d6efd);
     background-color: rgba(13, 110, 253, 0.05);
 }
@@ -226,4 +226,12 @@ main {
 /* Estilos para la barra de progreso */
 .progress-bar {
     transition: width 1.5s ease-out;
+}
+
+/* Estilos para el efecto de clic en la sección de perfil */
+.clicked-card {
+    transition: all 0.3s ease;
+    border-left: 3px solid var(--bs-primary, #0d6efd) !important;
+    background-color: rgba(13, 110, 253, 0.05) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
 }

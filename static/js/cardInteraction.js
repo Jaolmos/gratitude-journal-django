@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     
     // Seleccionar las tarjetas específicas de entradas en ambas vistas
-    const entryCards = document.querySelectorAll('.entry-card, .card.form-card, .streak-card, .achievement-card');
+    const entryCards = document.querySelectorAll('.entry-card, .card.form-card, .streak-card, .achievement-card, .profile-section');
     
     console.log(`Card interactions initialized - Found ${entryCards.length} cards - Touch device: ${isTouchDevice}`);
     
