@@ -134,10 +134,12 @@ main {
 /* Efectos para las tarjetas de beneficios en home */
 .card-hover {
     transition: all 0.3s ease;
+    overflow: hidden;
+    transform: translateY(0);
 }
 
 .card-hover:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -234,4 +236,97 @@ main {
     border-left: 3px solid var(--bs-primary, #0d6efd) !important;
     background-color: rgba(13, 110, 253, 0.05) !important;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ------------- Sección Home ------------- */
+
+/* Sección Hero */
+.hero-section {
+    background: url('../img/meditation.jpg') center/cover no-repeat;
+    position: relative;
+    min-height: 100vh;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+}
+
+.hero-section .container {
+    z-index: 1;
+}
+
+/* Sección de Beneficios */
+.benefits-section {
+    padding: 3rem 0;
+    background-color: var(--color-surface);
+}
+
+.benefits-title {
+    margin-bottom: 3rem;
+}
+
+.benefit-card {
+    height: 100%;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.8rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--bs-primary);
+}
+
+.benefit-card-body {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.benefit-title {
+    margin-bottom: 1rem;
+}
+
+.benefit-text {
+    color: #6c757d;
+}
+
+/* Tarjetas de Beneficios */
+.card-paz {
+    background-color: #e6f2ff !important;
+    border-top: 4px solid #0d6efd !important;
+}
+
+.card-bienestar {
+    background-color: #ffe6f0 !important;
+    border-top: 4px solid #e83e8c !important;
+}
+
+.card-crecimiento {
+    background-color: #e6fff0 !important;
+    border-top: 4px solid #28a745 !important;
+}
+
+.icon-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover .icon-circle {
+    transform: scale(1.1);
 }
