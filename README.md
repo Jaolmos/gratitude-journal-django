@@ -38,10 +38,18 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
   - Animaciones sutiles que mejoran la experiencia de usuario.
   - Retroalimentación visual inmediata a las acciones del usuario.
 
+- **Sistema de usuarios completo**
+  - Registro de usuarios con correo electrónico.
+  - Inicio de sesión personalizado.
+  - Perfil de usuario editable.
+  - Correo electrónico de bienvenida automático con información útil.
+  - Protección de rutas para usuarios autenticados.
+
 - **Seguridad**
   - Sistema de autenticación de usuarios.
   - Protección de datos personales.
   - Entradas privadas por usuario.
+  - Validación de formularios.
 
 ## Tecnologías utilizadas 🛠️
 
@@ -52,6 +60,7 @@ Una aplicación web desarrollada con Django que permite a los usuarios mantener 
 - MySQL
 - Python 3.10+
 - CSS moderno (animaciones, transiciones)
+- Sistema de correos electrónicos
 
 ## Características de la interfaz interactiva 💫
 
@@ -79,6 +88,10 @@ gratitude_journal/
 ├── static/                 # Archivos estáticos
 ├── staticfiles/            # Archivos estáticos recolectados
 ├── templates/              # Plantillas HTML
+│   ├── base.html           # Plantilla base
+│   ├── emails/             # Plantillas de correos electrónicos
+│   ├── gratitude_journal/  # Plantillas de la app principal
+│   └── users/              # Plantillas de usuarios
 ├── venv/                   # Entorno virtual
 ├── .env                    # Variables de entorno
 ├── .gitignore
@@ -122,3 +135,11 @@ python manage.py runserver
 
 ### Dashboard
 ![Dashboard](screenshots/Dashboard.png)
+
+## Próximas actualizaciones 🚀
+
+En el futuro, se implementará:
+- Sistema de restablecimiento de contraseña
+- Personalización adicional del perfil de usuario
+- Temas visuales personalizables
+- Categorización de entradas de gratitud
